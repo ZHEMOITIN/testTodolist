@@ -27,17 +27,13 @@ let initialState: TasksType = {
     ]
 }
 
-type actionType = ReturnType<typeof addNewListTasksAC>
-    | ReturnType<typeof changeStatusTaskAC>
+type actionType = ReturnType<typeof changeStatusTaskAC>
     | ReturnType<typeof removeTaskAC>
-    | ReturnType<typeof addNewListTasksAC>
+    | ReturnType<typeof addNewListTaskAC>
     | ReturnType<typeof addNewTaskAC>;
 
 export const TasksReducer = (state = initialState, action: actionType) => {
     switch (action.type) {
-        case 'ADD-NEW-LIST-TASKS': {
-            return {...state, [action.todolistID]: []};
-        }
         case 'CHANGE-STATUS-TASK': {
             return {
                 ...state,
@@ -50,7 +46,7 @@ export const TasksReducer = (state = initialState, action: actionType) => {
         case 'REMOVE-TASK': {
             return {...state, [action.todolistID]: state[action.todolistID].filter(t => t.id !== action.taskID)}
         }
-        case 'ADD-NEW-LIST-TASKS': {
+        case 'ADD-LIST-TASKS': {
             return {...state, [action.todolistID]: []};
         }
         case 'ADD-NEW-TASK': {
@@ -63,13 +59,6 @@ export const TasksReducer = (state = initialState, action: actionType) => {
     }
 }
 
-
-export const addNewListTasksAC = (todolistID: string) => {
-    return {
-        type: 'ADD-NEW-LIST-TASKS',
-        todolistID
-    } as const
-}
 
 export const changeStatusTaskAC = (todoID: string, taskID: string, conditionTask: boolean) => {
     return {

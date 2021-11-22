@@ -10,7 +10,7 @@ import {
     TodolistType
 } from "./redax/TodolistReducer/TodolistReducer";
 import {
-    addNewListTasksAC,
+    addNewListTaskAC,
     addNewTaskAC,
     changeStatusTaskAC,
     removeTaskAC,
@@ -32,7 +32,7 @@ function App() {
     const addNewTodolist = () => {
         let todoID = v1();
         dispatch(addNewTodolistAC(todoID, mainTodoTitle));
-        dispatch(addNewListTasksAC(todoID));
+        dispatch(addNewListTaskAC(todoID));
     }
 
     const changeFilterTodolist = (todolistID: string, valueIsDone: FilterTodoType) => {
@@ -45,7 +45,7 @@ function App() {
 
     const removeTasks = (todolistID: string, taskID: string) => {
         dispatch(removeTaskAC(todolistID, taskID));
-        dispatch(addNewListTasksAC(todolistID));
+
     }
 
     const addNewTask = (todolistID: string, titleTask: string) => {

@@ -59,10 +59,7 @@ export const Todolist: React.FC<TodolistPropsType> = (
                         <li key={t.id}>
                             <input type="checkbox" checked={t.isDone} onChange={e => changeTaskStatusHandler(e, t.id)}/>
                             <span>{t.title}</span>
-                            <button onClick={() => {
-                                removeTasksHandler(t.id)
-                            }}>X
-                            </button>
+                            <button onClick={() => {removeTasksHandler(t.id)}}>X</button>
                         </li>
                     );
                 })}

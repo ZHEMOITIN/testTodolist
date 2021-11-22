@@ -1,35 +1,14 @@
 import {todolistID1, todolistID2} from "../TodolistReducer/TodolistReducer";
 import {v1} from "uuid";
 import {
-    addNewListTasksAC,
+    addNewListTaskAC,
     addNewTaskAC,
     changeStatusTaskAC,
     removeTaskAC,
     TasksReducer,
     TasksType
 } from "./TasksReducer";
-import {strict} from "assert";
 
-test('correct new tasks list should be added', () => {
-
-    let todolistID = v1();
-
-    let startState: TasksType = {
-        [todolistID1]: [
-            {id: v1(), title: 'Молоко', isDone: false},
-            {id: v1(), title: 'Хлеб', isDone: false},
-            {id: v1(), title: 'Мука', isDone: true},
-            {id: v1(), title: 'Картофель', isDone: true},
-            {id: v1(), title: 'Масло', isDone: false},
-        ],
-    }
-
-    let endState = TasksReducer(startState, addNewListTasksAC(todolistID));
-
-    expect(endState[todolistID].length).toBe(0);
-    expect(endState[todolistID1].length).toBe(5);
-    expect(endState[todolistID1][2].title).toBe('Мука');
-})
 
 test('correct todolist should be filtered', () => {
 
@@ -132,7 +111,7 @@ test('new todolist should be added in obj tasksData', () => {
         ],
     }
 
-    let endState = TasksReducer(startState, addNewListTasksAC(todolistID));
+    let endState = TasksReducer(startState, addNewListTaskAC(todolistID));
 
     expect(endState[todolistID].length).toBe(0);
     expect(endState[todolistID1].length).toBe(3);
